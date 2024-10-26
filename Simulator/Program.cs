@@ -1,4 +1,6 @@
-﻿namespace Simulator;
+﻿using System.ComponentModel;
+
+namespace Simulator;
 
 internal class Program
 {
