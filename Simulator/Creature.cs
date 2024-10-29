@@ -1,4 +1,6 @@
-﻿namespace Simulator;
+﻿using System.Runtime.CompilerServices;
+
+namespace Simulator;
 
 internal class Creature
 {
@@ -62,4 +64,25 @@ internal class Creature
 
     public string Info => $"{Name} - {Level}";
 
+
+
+    public void Go(Direction direction)
+    {
+        Console.WriteLine($"{Name} goes {direction.ToString().ToLower()}");
+    }
+
+
+    public void Go(Direction[] directions)
+    {
+        foreach(Direction element in directions)
+        {
+            Go(element);
+        }
+    }
+
+    public void Go(string dir)
+    {
+        Go(DirectionParser.Parse(dir));
+    }
 }
+

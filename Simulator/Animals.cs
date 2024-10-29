@@ -1,6 +1,4 @@
-﻿using System.Xml.Linq;
-
-namespace Simulator;
+﻿namespace Simulator;
 
 internal class Animals
 {
