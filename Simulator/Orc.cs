@@ -9,18 +9,8 @@ internal class Orc : Creature
 
         init
         {
-            if (value < 0)
-            {
-                rage = 0;
-            }
-            else if (value > 10)
-            {
-                rage = 10;
-            }
-            else
-            {
-                rage = value;
-            }
+            rage = Validator.LimiterEO(value, 0, 10);
+
         }
     }
 
@@ -58,5 +48,10 @@ internal class Orc : Creature
     public override int Power
     {
         get { return (Level * 7 + 3 * Rage); }
+    }
+
+    public override string Info
+    {
+        get { return $"{Name} [{Level}] [{Rage}]"; }
     }
 } 

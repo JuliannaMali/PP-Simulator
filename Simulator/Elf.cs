@@ -9,18 +9,7 @@ internal class Elf : Creature
 
         init
         {
-            if (value < 0)
-            {
-                agility = 0;
-            }
-            else if (value > 10)
-            {
-                agility = 10;
-            }
-            else
-            {
-                agility = value;
-            }
+            agility = Validator.LimiterEO(value, 0, 10);
         }
     }
 
@@ -60,6 +49,11 @@ internal class Elf : Creature
     public override int Power
     {
         get { return (Level * 8 + 2 * Agility); }
+    }
+
+    public override string Info
+    {
+        get { return $"{Name} [{Level}] [{Agility}]"; }
     }
 
 }
