@@ -1,8 +1,6 @@
-﻿using System.Runtime.CompilerServices;
+﻿namespace Simulator;
 
-namespace Simulator;
-
-internal class Creature
+abstract class Creature
 {
     private string name = "Unknown";
     private int level = 1;
@@ -60,7 +58,7 @@ internal class Creature
 
     public Creature() { }
 
-    public void SayHi() => Console.WriteLine($"Hi, my name is {Name} and my level is {Level}");
+    public abstract void SayHi();
 
     public string Info => $"{Name} - {Level}";
 
@@ -84,5 +82,7 @@ internal class Creature
     {
         Go(DirectionParser.Parse(dir));
     }
+
+    public abstract int Power { get; }
 }
 
