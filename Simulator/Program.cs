@@ -6,8 +6,15 @@ internal class Program
     {
         Console.WriteLine("Starting Simulator!\n");
 
-        Lab4a();
-        Lab4b();
+        /*        Lab4a();
+                Lab4b();*/
+
+        Point p = new(10, 25);
+        Console.WriteLine(p.Next(Direction.Up));
+        Console.WriteLine(p.Next(Direction.Right));
+        Console.WriteLine(p.Next(Direction.Down));
+        Console.WriteLine(p.Next(Direction.Left));
+        Console.WriteLine(p.Next(Direction.Up).Next(Direction.Up));
 
     }
 
