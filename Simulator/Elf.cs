@@ -1,6 +1,6 @@
 ﻿namespace Simulator;
 
-internal class Elf : Creature
+public class Elf : Creature
 {
     private int agility;
     public int Agility
@@ -16,7 +16,7 @@ internal class Elf : Creature
     private int counter = 0;
     public void Sing()
     {
-        Console.WriteLine($"{Name} is singing");
+       
         counter++;
         if (counter == 3)
         {
@@ -42,9 +42,8 @@ internal class Elf : Creature
             Agility = agility;
     }
 
-    public override void SayHi() => Console.WriteLine(
-    $"Hi, I'm {Name}, my level is {Level}, my agility is {Agility}."
-    );
+    public override string Greeting() => 
+    $"Hi, I'm {Name}, my level is {Level}, my agility is {Agility}.";
 
     public override int Power
     {

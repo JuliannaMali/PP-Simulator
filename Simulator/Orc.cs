@@ -1,6 +1,6 @@
 ﻿namespace Simulator;
 
-internal class Orc : Creature
+public class Orc : Creature
 {
     private int rage;
     public int Rage
@@ -17,7 +17,7 @@ internal class Orc : Creature
     private int counter = 0;
     public void Hunt()
     {
-        Console.WriteLine($"{Name} is hunting");
+        
         counter++;
         if (counter == 2)
         {
@@ -41,9 +41,8 @@ internal class Orc : Creature
         Rage = rage;
     }
 
-    public override void SayHi() => Console.WriteLine(
-    $"Hi, I'm {Name}, my level is {Level}, my rage is {Rage}."
-    );
+    public override string Greeting() => 
+    $"Hi, I'm {Name}, my level is {Level}, my rage is {Rage}.";
 
     public override int Power
     {

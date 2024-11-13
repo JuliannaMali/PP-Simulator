@@ -1,6 +1,6 @@
 ﻿namespace Simulator;
 
-internal class Rectangle
+public class Rectangle
 {
     public readonly int X1, Y1;
     public readonly int X2, Y2;
