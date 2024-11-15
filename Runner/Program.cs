@@ -95,5 +95,4 @@ internal class Program
         Console.WriteLine($"\n{mapatest.NextDiagonal(p4, Direction.Down)}");
     }
 
-
 }

@@ -8,21 +8,17 @@ public readonly struct Point
 
     public Point Next(Direction direction)
     {
-        if (direction == (Direction)0)
+
+        switch (direction)
         {
-            return new Point(X, Y + 1);
-        }
-        else if (direction == (Direction)1)
-        {
-            return new Point(X + 1, Y);
-        }
-        else if (direction == (Direction)2)
-        {
-            return new Point(X, Y - 1);
-        }
-        else if (direction == (Direction)3)
-        {
-            return new Point(X - 1, Y);
+            case Direction.Up:
+                return new Point(X, Y + 1);
+            case Direction.Right:
+                return new Point(X + 1, Y);
+            case Direction.Down:
+                return new Point(X, Y - 1);
+            case Direction.Left:
+                return new Point(X - 1, Y);
         }
 
         return default(Point);

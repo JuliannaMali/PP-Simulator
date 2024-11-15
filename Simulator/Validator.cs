@@ -21,18 +21,18 @@ public static class Validator
     public static string ShortnerCA(string value, int min, int max, char placeholder)
     {
         string holder = value.Trim();
+        if (holder == "")
+        {
+            return holder.PadRight(min, placeholder);
+        }
         string name = holder.ToUpper()[0] + holder.Substring(1);
         if (name.Length >= max)
         {
-            return name.Substring(0, max);
-        }
-        if (name.Length<min)
-        {
-            return name.PadRight(min, placeholder);
+            name = name.Substring(0, max).Trim();
         }
         if (name.Trim().Length<min)
         {
-            return name.Trim().PadRight(min, placeholder);
+            name = name.Trim().PadRight(min, placeholder);
         }
         return name;
     }
