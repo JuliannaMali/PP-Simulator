@@ -2,21 +2,12 @@
 
 namespace Simulator.Maps;
 
-public class SmallTorusMap : Map
+public class SmallTorusMap : SmallMap
 {
-    public readonly int Size;
+    //w domu popraw wszystkie size
+    
+    public SmallTorusMap(int sizeX, int sizeY) : base(sizeX, sizeY) { }
 
-    public SmallTorusMap(int size)
-    {
-        if (4 < size && size < 21)
-        {
-            Size = size;
-        }
-        else
-        {
-            throw new ArgumentOutOfRangeException("Podany wymiar mapy jest nieprawidłowy");
-        }
-    }
 
     public Rectangle Mapa(int Size)
     {
