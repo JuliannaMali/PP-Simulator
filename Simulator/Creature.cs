@@ -4,8 +4,14 @@ namespace Simulator;
 public abstract class Creature
 {
     
-    public Map? Map { get; }
-    public Point Position { get; set; }
+    public Map? Map { get; private set; }
+    public Point Position { get; private set; }
+
+    public void InitMapAndPosition(Map map, Point p) { }
+    
+
+
+
 
 
     
@@ -59,9 +65,17 @@ public abstract class Creature
     }
 
 
-    public string Go(Direction direction) => $"{direction.ToString().ToLower()}";
+    public string Go(Direction direction)
+    {
+        //zgodnie z regulami Map
+        
+        return $"{direction.ToString().ToLower()}";
+
+        //mapa musi przestawić stwora, wywołac move z mapy
+    }
 
 
+    //out
     public string[] Go(Direction[] directions)
     {
         var result = new string[directions.Length];
@@ -72,6 +86,8 @@ public abstract class Creature
         return result;
     }
 
+
+    //out
     public void Go(string dir)
     {
         Go(DirectionParser.Parse(dir));

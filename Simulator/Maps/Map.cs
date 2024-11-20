@@ -7,6 +7,25 @@ namespace Simulator.Maps;
 /// </summary>
 public abstract class Map
 {
+    public abstract void Add(Creature creature, Point p);
+    public abstract void Remove(Creature creature, Point p);
+    public void Move(Creature creature, Point p, Direction d)
+    {
+        //remove
+        //add
+    }
+
+    //zwracamy tu liste stworó
+    public abstract List<Creature>? At(int x, int y);
+
+    public abstract List<Creature>? At(Point p);
+
+
+
+    
+    
+    
+    
     public readonly int SizeX;
     public readonly int SizeY;
 
@@ -30,6 +49,9 @@ public abstract class Map
         _map = new Rectangle(0, 0, SizeX - 1, SizeY - 1);
     }
     
+    
+
+
     /// <summary>
     /// Check if give point belongs to the map.
     /// </summary>
