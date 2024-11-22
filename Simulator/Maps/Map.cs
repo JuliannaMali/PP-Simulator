@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace Simulator.Maps;
+﻿namespace Simulator.Maps;
 
 /// <summary>
 /// Map of points.
@@ -9,13 +7,8 @@ public abstract class Map
 {
     public abstract void Add(Creature creature, Point p);
     public abstract void Remove(Creature creature, Point p);
-    public void Move(Creature creature, Point p, Direction d)
-    {
-        //remove
-        //add
-    }
+    public abstract void Move(Creature creature, Point p, Direction d);
 
-    //zwracamy tu liste stworó
     public abstract List<Creature>? At(int x, int y);
 
     public abstract List<Creature>? At(Point p);
@@ -29,7 +22,7 @@ public abstract class Map
     public readonly int SizeX;
     public readonly int SizeY;
 
-    private Rectangle _map;
+    private Rectangle mapa;
 
     public Map(int sizeX, int sizeY)
     {
@@ -46,7 +39,7 @@ public abstract class Map
         SizeX = sizeX;
         SizeY = sizeY;
 
-        _map = new Rectangle(0, 0, SizeX - 1, SizeY - 1);
+        mapa = new Rectangle(0, 0, SizeX - 1, SizeY - 1);
     }
     
     
@@ -57,7 +50,7 @@ public abstract class Map
     /// </summary>
     /// <param name="p">Point to check.</param>
     /// <returns></returns>
-    public virtual bool Exist(Point p) => _map.Contains(p);
+    public virtual bool Exist(Point p) => mapa.Contains(p);
 
     /// <summary>
     /// Next position to the point in a given direction.

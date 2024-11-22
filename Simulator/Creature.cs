@@ -7,14 +7,21 @@ public abstract class Creature
     public Map? Map { get; private set; }
     public Point Position { get; private set; }
 
-    public void InitMapAndPosition(Map map, Point p) { }
+    public void InitMapAndPosition(Map map, Point p) 
+    {
+        Map = map;
+        if (map.Exist(p))
+        {
+            Position = p;
+        }
+        else
+        {
+            throw new ArgumentOutOfRangeException("Punkt nie należy do mapy");
+        }
+        
+    }
     
 
-
-
-
-
-    
     private string name = "Unknown";
     private int level = 1;
 
@@ -68,6 +75,8 @@ public abstract class Creature
     public string Go(Direction direction)
     {
         //zgodnie z regulami Map
+
+        Map.Move(this, Position, direction);
         
         return $"{direction.ToString().ToLower()}";
 
@@ -75,7 +84,7 @@ public abstract class Creature
     }
 
 
-    //out
+/*  out
     public string[] Go(Direction[] directions)
     {
         var result = new string[directions.Length];
@@ -87,11 +96,11 @@ public abstract class Creature
     }
 
 
-    //out
+    out
     public void Go(string dir)
     {
         Go(DirectionParser.Parse(dir));
-    }
+    }*/
 
     public abstract int Power { get; }
 }

@@ -10,24 +10,30 @@ public static class DirectionParser
         {
             string element1 = element.ToString().ToLower();
             
-            if (element1 == "u")
+            switch (element1)
             {
-                dir.Add((Direction)0);
-            }
-            else if (element1 == "r")
-            {
-                dir.Add((Direction)1);
-            }
-            else if (element1 == "d")
-            {
-                dir.Add((Direction)2);
-            }
-            else if (element1 == "l")
-            {;
-                dir.Add((Direction)3);
+                case "u":
+                    {
+                        dir.Add((Direction)0);
+                        break;
+                    }
+                case "r":
+                    {
+                        dir.Add((Direction)1);
+                        break;
+                    }
+                case "d":
+                    {
+                        dir.Add((Direction)2);
+                        break;
+                    }
+                case "l":
+                    {
+                        dir.Add((Direction)3);
+                        break;
+                    }
             }
         }
-
         return dir;
     }
 
