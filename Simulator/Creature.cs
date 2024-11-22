@@ -10,6 +10,8 @@ public abstract class Creature
     public void InitMapAndPosition(Map map, Point p) 
     {
         Map = map;
+        map.Add(this, p);
+
         if (map.Exist(p))
         {
             Position = p;
