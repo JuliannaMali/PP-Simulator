@@ -2,6 +2,7 @@
 
 public class SmallSquareMap : SmallMap
 {
+    public readonly int Size;
     public SmallSquareMap(int size) : base(size, size) { }
 
     public override Point Next(Point p, Direction d)
@@ -24,12 +25,5 @@ public class SmallSquareMap : SmallMap
             return p.NextDiagonal(d);
         }
         return p;
-    }
-
-
-    public override void Move(Creature creature, Point p, Direction d)
-    {
-        Remove(creature, p);
-        Add(creature, Next(p, d));
     }
 }

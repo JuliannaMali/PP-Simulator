@@ -32,8 +32,7 @@ public class Simulation
     /// </summary>
     public bool Finished = false;
 
-    private bool turn = false;
-    private bool reset = false;
+    private int counter = 0;
 
     /// <summary>
     /// Creature which will be moving current turn.
@@ -42,24 +41,7 @@ public class Simulation
     {
         get
         {
-            for(int i =0; i<Creatures.Count;)
-            {
-                if (turn)
-                {
-                    i++;
-                    turn = false;
-                }
-
-                if (reset)
-                {
-                    i = 0;
-                    reset = false;
-                }
-
-                return Creatures[i];
-            }
-
-            return Creatures[0];
+            return Creatures[counter%Creatures.Count];
         } 
     }
 
@@ -70,30 +52,9 @@ public class Simulation
     {
 
         get
-        {
-            for(int i=0; i< Moves.Length; i++)
-            {
-                if (turn)
-                {
-                    i++;
-                    turn = false;
-                }
+        {  
+            return DirectionParser.Parse(Moves)[counter].ToString().ToLower();
 
-                string move = Moves[i].ToString().ToLower();
-
-                switch (move)
-                {
-                    case "u":
-                        return "up";
-                    case "d":
-                        return "down";
-                    case "r":
-                        return "right";
-                    case "l":
-                        return "left";
-                }
-            }
-            return Moves;
         }
 
     }
@@ -119,14 +80,30 @@ public class Simulation
 
         if (creatures.Count != positions.Count)
         {
-            throw new ArgumentException("Nie każdy stwór ma pozycję startową");
+            throw new ArgumentException("Liczba stworów a liczba punktów są różne");
         }
         else
         {
             Positions = positions;
         }
 
-        Moves = string.Concat(DirectionParser.Parse(moves));
+
+        var tempmoves = (DirectionParser.Parse(moves));
+        List<char> shorttempmoves = new List<char>();
+        {
+            for (int i = 0; i < tempmoves.Count; i++)
+            {
+                string anothertemp = tempmoves[i].ToString();
+                shorttempmoves.Add(anothertemp[0]);
+            }
+        }
+        Moves = string.Concat(shorttempmoves);
+
+
+        for (int i = 0; i<creatures.Count; i++)
+        {
+            Map.Add(creatures[i], positions[i]);
+        }
 
     }
 
@@ -136,19 +113,22 @@ public class Simulation
     /// </summary>
     public void Turn() 
     {
-        int difference = Moves.Length - Creatures.Count();
-
-        if(difference != 0 && CurrentCreature == Creatures[difference-1])
+        if (Finished)
         {
-            reset = true;
+            throw new Exception("Symulacja zakończona");
         }
-        
-        string temp = CurrentMoveName[0].ToString();
-        var move = DirectionParser.Parse(temp);
+        else
+        {
+            var move = DirectionParser.Parse(Moves)[counter];
 
-        CurrentCreature.Go(move[0]);
-        
-        turn = true;
+            Map.Move(CurrentCreature, CurrentCreature.Position, Map.Next(CurrentCreature.Position, move));
+
+            counter++;
+            if (counter >= Moves.Length)
+            {
+                Finished = true;
+            }
+        }
        
     }
 }

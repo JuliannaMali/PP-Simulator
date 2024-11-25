@@ -7,7 +7,7 @@ public abstract class Map
 {
     public abstract void Add(Creature creature, Point p);
     public abstract void Remove(Creature creature, Point p);
-    public abstract void Move(Creature creature, Point p, Direction d);
+    public abstract void Move(Creature creature, Point p, Point p2);
 
     public abstract List<Creature>? At(int x, int y);
 

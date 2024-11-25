@@ -4,21 +4,9 @@ namespace Simulator.Maps;
 
 public class SmallTorusMap : SmallMap
 {
-    
+
+    public readonly int Size;
     public SmallTorusMap(int sizeX, int sizeY) : base(sizeX, sizeY) { }
-
-
-    public Rectangle Mapa(int SizeX, int SizeY)
-    {
-        Rectangle map = new Rectangle(0, 0, (SizeX - 1), (SizeY - 1));
-        return map;
-    }
-
-    public override bool Exist(Point p)
-    {
-        return Mapa(SizeX, SizeY).Contains(p);
-    }
-
     public override Point Next(Point p, Direction d)
     {
         if(p.X==SizeX-1 && d == Direction.Right)
@@ -99,11 +87,5 @@ public class SmallTorusMap : SmallMap
             }
         }
         return p.NextDiagonal(d);
-    }
-
-    public override void Move(Creature creature, Point p, Direction d)
-    {
-        Remove(creature, p);
-        Add(creature, Next(p, d));
     }
 }

@@ -10,17 +10,7 @@ public abstract class Creature
     public void InitMapAndPosition(Map map, Point p) 
     {
         Map = map;
-        map.Add(this, p);
-
-        if (map.Exist(p))
-        {
-            Position = p;
-        }
-        else
-        {
-            throw new ArgumentOutOfRangeException("Punkt nie należy do mapy");
-        }
-        
+        Position = p;        
     }
     
 
@@ -78,7 +68,7 @@ public abstract class Creature
     {
         //zgodnie z regulami Map
 
-        Map.Move(this, Position, direction);
+        Map?.Move(this, Position, Map.Next(Position, direction));
         
         return $"{direction.ToString().ToLower()}";
 
