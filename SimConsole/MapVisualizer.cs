@@ -76,46 +76,6 @@ public class MapVisualizer
                 Console.Write($"{Box.BottomMid}{Box.Horizontal}{Box.BottomRight}\n");
             }
         }
-
-
-/*      //środek
-
-        for (int i = 0; i < wiersze; i++)
-        {
-            Console.Write(Box.Vertical);
-            for (int j = 0; j < kolumny; j++)
-            {
-                var c = Mapa.At(j, i);
-                
-                if (c != null &&  c.Count != 0)
-                {
-                    switch (c.Count)
-                    {
-                        case 1:
-
-                            Console.Write(c[0] is Elf ? 'E' : 'O');
-
-                            break;
-                        case > 1:
-                            Console.Write("X");
-                            break;
-                    }
-                }
-                else
-                {
-                    Console.Write(' ');
-                }
-            }
-            Console.Write($"{Box.Vertical}\n");
-        }
-
-        //dół
-        Console.Write(Box.BottomLeft);
-        for(int i = 0; i<kolumny; i++)
-        {
-            Console.Write(Box.Horizontal);
-        }
-        Console.Write($"{Box.BottomRight}\n");*/
     }
 
 

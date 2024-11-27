@@ -1,7 +1,7 @@
 ﻿using Simulator.Maps;
 namespace Simulator;
 
-public abstract class Creature
+public abstract class Creature : IMappable
 {
     
     public Map? Map { get; private set; }
@@ -64,13 +64,11 @@ public abstract class Creature
     }
 
 
-    public string Go(Direction direction)
+    public void Go(Direction direction)
     {
         //zgodnie z regulami Map
 
         Map?.Move(this, Position, Map.Next(Position, direction));
-        
-        return $"{direction.ToString().ToLower()}";
 
         //mapa musi przestawić stwora, wywołac move z mapy
     }

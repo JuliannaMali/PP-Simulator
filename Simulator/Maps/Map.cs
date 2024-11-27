@@ -5,13 +5,13 @@
 /// </summary>
 public abstract class Map
 {
-    public abstract void Add(Creature creature, Point p);
-    public abstract void Remove(Creature creature, Point p);
-    public abstract void Move(Creature creature, Point p, Point p2);
+    public abstract void Add(IMappable mappable, Point p);
+    public abstract void Remove(IMappable mappable, Point p);
+    public abstract void Move(IMappable mappable, Point p, Point p2);
 
-    public abstract List<Creature>? At(int x, int y);
+    public abstract List<IMappable>? At(int x, int y);
 
-    public abstract List<Creature>? At(Point p);
+    public abstract List<IMappable>? At(Point p);
 
 
 
@@ -68,4 +68,9 @@ public abstract class Map
     /// <param name="d">Direction.</param>
     /// <returns>Next point.</returns>
     public abstract Point NextDiagonal(Point p, Direction d);
+
+    internal void Move(IMappable currentMappable, object position, Point point)
+    {
+        throw new NotImplementedException();
+    }
 }

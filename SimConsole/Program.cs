@@ -12,9 +12,9 @@ internal class Program
         Console.WriteLine("Starting positions");
 
 
-        SmallSquareMap map = new(5);
-        List<Creature> creatures = [new Orc("Gorbag"), new Elf("Elandor")];
-        List<Point> points = [new(2, 2), new(3, 1)];
+        SmallTorusMap map = new(7, 7);
+        List<IMappable> creatures = [new Orc("Gorbag"), new Elf("Elandor"), new Elf("Sil")];
+        List<Point> points = [new(2, 2), new(3, 1), new(6,0)];
         string moves = "dlrludl";
 
         Simulation simulation = new(map, creatures, points, moves);
@@ -30,7 +30,7 @@ internal class Program
             Console.ReadKey();
             
             Console.WriteLine($"Tura {turn}");
-            Console.Write($"{simulation.CurrentCreature.Info} {simulation.CurrentCreature.Position} goes {simulation.CurrentMoveName}\n");
+            Console.Write($"{(object)simulation.CurrentMappable} goes {simulation.CurrentMoveName}\n");
 
 
             Console.WriteLine();
