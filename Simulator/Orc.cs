@@ -1,4 +1,6 @@
-﻿namespace Simulator;
+﻿using Simulator.Maps;
+
+namespace Simulator;
 
 public class Orc : Creature
 {
@@ -13,6 +15,9 @@ public class Orc : Creature
 
         }
     }
+
+    public override char Symbol { get; } = 'O';
+
 
     private int counter = 0;
     public void Hunt()

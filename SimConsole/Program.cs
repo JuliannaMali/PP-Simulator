@@ -1,6 +1,5 @@
 ﻿using SimConsole;
 using Simulator.Maps;
-using System.Text;
 
 namespace Simulator;
 
@@ -12,10 +11,10 @@ internal class Program
         Console.WriteLine("Starting positions");
 
 
-        SmallTorusMap map = new(7, 7);
-        List<IMappable> creatures = [new Orc("Gorbag"), new Elf("Elandor"), new Elf("Sil")];
-        List<Point> points = [new(2, 2), new(3, 1), new(6,0)];
-        string moves = "dlrludl";
+        SmallTorusMap map = new(8, 6);
+        List<IMappable> creatures = [new Orc("Gorbag"), new Elf("Elandor"), new Animals() { Description = "Króliki", Size = 7}, new Birds() { Description = "Orły", Size = 2}, new Birds() { Description = "Strusie", CanFly = false}];
+        List<Point> points = [new(2, 2), new(3, 1), new(5, 2), new(6, 0), new(6, 3)];
+        string moves = "dlrludlldrluudd";
 
         Simulation simulation = new(map, creatures, points, moves);
         MapVisualizer mapVisualizer = new(simulation.Map);
@@ -28,7 +27,7 @@ internal class Program
         while (!simulation.Finished)
         {
             Console.ReadKey();
-            
+
             Console.WriteLine($"Tura {turn}");
             Console.Write($"{(object)simulation.CurrentMappable} goes {simulation.CurrentMoveName}\n");
 

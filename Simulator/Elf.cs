@@ -1,4 +1,6 @@
-﻿namespace Simulator;
+﻿using Simulator.Maps;
+
+namespace Simulator;
 
 public class Elf : Creature
 {
@@ -33,7 +35,7 @@ public class Elf : Creature
         }
     }
 
-
+    public override char Symbol { get; } = 'E';
 
     public Elf() : base() {}
 

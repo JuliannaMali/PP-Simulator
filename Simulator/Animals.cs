@@ -2,7 +2,7 @@
 
 namespace Simulator;
 
-internal class Animals : IMappable
+public class Animals : IMappable
 {
     private string description = "Unidentified";
     public required string Description
@@ -14,18 +14,26 @@ internal class Animals : IMappable
         }
     }
     public uint Size { get; set; } = 3;
-
     public virtual string Info => $"{Description} <{Size}>";
 
-    public void Go(Direction direction)
-    {
-        throw new NotImplementedException();
-    }
+
+    public Map? Map { get; private set; }
+    public Point Position { get; private set; }
+
+    public virtual char Symbol { get; } = 'A';
+
 
     public void InitMapAndPosition(Map map, Point p)
     {
-        throw new NotImplementedException();
+        Map = map;
+        Position = p;
     }
+    public virtual void Go(Direction direction)
+    {
+        Map?.Move(this, Position, Map.Next(Position, direction));
+    }
+
+    
 
     public override string ToString()
     {

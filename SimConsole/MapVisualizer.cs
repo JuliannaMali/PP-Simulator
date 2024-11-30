@@ -40,8 +40,7 @@ public class MapVisualizer
                     switch (c.Count)
                     {
                         case 1:
-                            var type = c[0] is Elf ? 'E' : 'O';
-                            Console.Write($"{type}{Box.Vertical}");
+                            Console.Write($"{c[0].Symbol}{Box.Vertical}");
                             break;
                         case > 1:
                             Console.Write($"X{Box.Vertical}");

@@ -64,33 +64,13 @@ public abstract class Creature : IMappable
     }
 
 
+    public virtual char Symbol { get; }
+
     public void Go(Direction direction)
     {
-        //zgodnie z regulami Map
-
         Map?.Move(this, Position, Map.Next(Position, direction));
-
-        //mapa musi przestawić stwora, wywołac move z mapy
     }
 
-
-/*  out
-    public string[] Go(Direction[] directions)
-    {
-        var result = new string[directions.Length];
-        for (int i = 0; i < directions.Length; i++)
-        {
-            result[i] = Go(directions[i]);
-        }
-        return result;
-    }
-
-
-    out
-    public void Go(string dir)
-    {
-        Go(DirectionParser.Parse(dir));
-    }*/
 
     public abstract int Power { get; }
 }
