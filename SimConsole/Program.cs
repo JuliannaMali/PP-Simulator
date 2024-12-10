@@ -21,21 +21,30 @@ internal class Program
 
 
 
-        var turn = 1;
-        mapVisualizer.Draw();
+        /*        var turn = 1;
+                mapVisualizer.Draw();
 
-        while (!simulation.Finished)
-        {
-            Console.ReadKey();
+                while (!simulation.Finished)
+                {
+                    Console.ReadKey();
 
-            Console.WriteLine($"Tura {turn}");
-            Console.Write($"{(object)simulation.CurrentMappable} goes {simulation.CurrentMoveName}\n");
+                    Console.WriteLine($"Tura {turn}");
+                    Console.Write($"{(object)simulation.CurrentMappable} goes {simulation.CurrentMoveName}\n");
 
 
-            Console.WriteLine();
-            simulation.Turn();
-            mapVisualizer.Draw();
-            turn++;
-        }
+                    Console.WriteLine();
+                    simulation.Turn();
+                    mapVisualizer.Draw();
+                    turn++;
+                }*/
+
+        SimulationHistory simulationHistory = new(simulation);
+
+
+        simulationHistory.Tura(5);
+        simulationHistory.Tura(10);
+        simulationHistory.Tura(15);
+        simulationHistory.Tura(20);
+
     }
 }
