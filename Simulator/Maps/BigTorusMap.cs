@@ -5,7 +5,6 @@ namespace Simulator.Maps;
 public class BigTorusMap : BigMap
 {
     public readonly int Size;
-
     public BigTorusMap(int sizeX, int sizeY) : base(sizeX, sizeY) { }
 
     public override Point Next(Point p, Direction d)
