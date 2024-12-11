@@ -8,7 +8,6 @@ internal class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Starting Simulator!\n");
-        Console.WriteLine("Starting positions");
 
 
         BigTorusMap map = new(8, 6);
@@ -17,25 +16,38 @@ internal class Program
         string moves = "dlrludlldrluuduldurr";
 
         Simulation simulation = new(map, creatures, points, moves);
-        MapVisualizer mapVisualizer = new(simulation.Map);
+
+        SimulationHistory historia = new(simulation);
+        LogVisualizer logvisualizer = new(historia);
+
+        
+        logvisualizer.Draw(0);
+        logvisualizer.Draw(5);
+        logvisualizer.Draw(10);
+        logvisualizer.Draw(15);
+        logvisualizer.Draw(20);
 
 
 
-        var turn = 1;
-        mapVisualizer.Draw();
-
-        while (!simulation.Finished)
-        {
-            Console.ReadKey();
-
-            Console.WriteLine($"Tura {turn}");
-            Console.Write($"{(object)simulation.CurrentMappable} goes {simulation.CurrentMoveName}\n");
+        /*        MapVisualizer mapVisualizer = new(simulation.Map);
 
 
-            Console.WriteLine();
-            simulation.Turn();
-            mapVisualizer.Draw();
-            turn++;
-        }
+
+                var turn = 1;
+                mapVisualizer.Draw();
+
+                while (!simulation.Finished)
+                {
+                    Console.ReadKey();
+
+                    Console.WriteLine($"Tura {turn}");
+                    Console.Write($"{(object)simulation.CurrentMappable} goes {simulation.CurrentMoveName}\n");
+
+
+                    Console.WriteLine();
+                    simulation.Turn();
+                    mapVisualizer.Draw();
+                    turn++;
+                }*/
     }
 }
