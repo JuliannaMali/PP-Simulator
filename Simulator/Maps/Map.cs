@@ -5,24 +5,12 @@
 /// </summary>
 public abstract class Map
 {
-    public abstract void Add(IMappable mappable, Point p);
-    public abstract void Remove(IMappable mappable, Point p);
-    public abstract void Move(IMappable mappable, Point p, Point p2);
-
-    public abstract List<IMappable>? At(int x, int y);
-
-    public abstract List<IMappable>? At(Point p);
-
-
-
-    
-    
-    
-    
     public readonly int SizeX;
     public readonly int SizeY;
 
     private Rectangle mapa;
+
+    Dictionary<Point, List<IMappable>> _fields;
 
     public Map(int sizeX, int sizeY)
     {
@@ -40,9 +28,50 @@ public abstract class Map
         SizeY = sizeY;
 
         mapa = new Rectangle(0, 0, SizeX - 1, SizeY - 1);
+
+        _fields = new Dictionary<Point, List<IMappable>>();
     }
-    
-    
+
+    public void Add(IMappable mappable, Point p)
+    {
+        if (!_fields.ContainsKey(p))
+        {
+            _fields[p] = new List<IMappable>();
+
+        }
+
+        _fields[p].Add(mappable);
+
+        mappable.InitMapAndPosition(this, p);
+    }
+    public void Remove(IMappable mappable, Point p)
+    {
+        _fields[p].Remove(mappable);
+    }
+    public void Move(IMappable mappable, Point p, Point p2)
+    {
+        Remove(mappable, p);
+        Add(mappable, p2);
+    }
+
+    public List<IMappable>? At(int x, int y)
+    {
+        var p = new Point(x, y);
+        if (_fields.ContainsKey(p))
+        {
+            return _fields[p];
+        }
+        return new List<IMappable>();
+    }
+
+    public List<IMappable>? At(Point p)
+    {
+        if (_fields.ContainsKey(p))
+        {
+            return _fields[p];
+        }
+        return new List<IMappable>();
+    }
 
 
     /// <summary>
@@ -69,8 +98,4 @@ public abstract class Map
     /// <returns>Next point.</returns>
     public abstract Point NextDiagonal(Point p, Direction d);
 
-    internal void Move(IMappable currentMappable, object position, Point point)
-    {
-        throw new NotImplementedException();
-    }
 }

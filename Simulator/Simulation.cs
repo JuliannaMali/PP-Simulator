@@ -49,8 +49,7 @@ public class Simulation
     /// Lowercase name of direction which will be used in current turn.
     /// </summary>
     public string CurrentMoveName
-    {
-
+    { 
         get
         {  
             return DirectionParser.Parse(Moves)[counter].ToString().ToLower();
@@ -129,8 +128,5 @@ public class Simulation
                 Finished = true;
             }
         }
-
-       
     }
-
 }
