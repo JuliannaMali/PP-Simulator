@@ -1,0 +1,79 @@
+﻿@page
+@model SimulationModel;
+@{
+    ViewData["Title"] = "SimWeb";
+}
+
+<div id="sim">
+    <div class="map-header">
+        <form method="post" asp-page-handler="Previous">
+            <button>&lt;-</button>
+        </form>
+        <div class="turn"> Tura @Model.Counter</div>
+        <form method="post" asp-page-handler="Forward">
+            <button>-&gt;</button>
+        </form>
+    </div>
+
+    <div id="mapa">
+    @for(int i = Model.History.SizeY-1; i >= 0; i--)
+    {
+        if(i != -1)
+        {
+            <p class="numerki">@i</p>    
+        }
+        @for(int j = 0; j < Model.History.SizeX; j++)
+        {
+            <div class="pozycja">
+                @if (@Model.History.TurnLogs[Model.Counter].Symbols[new Simulator.Point(j, i)] == 'O')
+                {
+                    <img src="/img/O.png" alt="Orc" class="img">
+                }
+                else if (@Model.History.TurnLogs[Model.Counter].Symbols[new Simulator.Point(j, i)] == 'E')
+                {
+                    <img src="/img/E.png" alt="Elf" class="img">
+                }
+                else if (@Model.History.TurnLogs[Model.Counter].Symbols[new Simulator.Point(j, i)] == 'A')
+                {
+                    <img src="/img/A.png" alt="Rabbit" class="img">
+                }
+                else if (@Model.History.TurnLogs[Model.Counter].Symbols[new Simulator.Point(j, i)] == 'B')
+                {
+                    <img src="/img/Bird.png" alt="Eagle" class="img">
+                }
+                else if (@Model.History.TurnLogs[Model.Counter].Symbols[new Simulator.Point(j, i)] == 'b')
+                {
+                    <img src="/img/b.png" alt="Emu" class="img">
+                }
+                else if (@Model.History.TurnLogs[Model.Counter].Symbols[new Simulator.Point(j, i)] == 'X')
+                {
+                    <img src="/img/X.png" alt="Wiele" class="img">                         
+                }
+
+            </div>@* 
+            <div class="pozycja">@Model.History.TurnLogs[Model.Counter].Symbols[new Simulator.Point(j, i)]</div> *@
+        }
+
+    }
+    @for (int x = 0; x < Model.History.SizeX+1; x++)
+    {
+        <span class="numerki-2">
+            @if (x > 0)
+            {
+                @(x-1);
+            }
+        </span>
+    }
+    </div>
+
+    <div id="map-footer">
+    @if(Model.Counter == 0)
+    {
+        <p id="start">Pozycje startowe</p>
+    }
+    else
+    {
+        <p>@Model.History.TurnLogs[Model.Counter-1].Mappable.ToString() goes @Model.History.TurnLogs[Model.Counter-1].Move</p>
+    }
+    </div>
+</div>

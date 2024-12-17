@@ -47,7 +47,7 @@ public class LogVisualizer
         {
             Console.Write($"\n{Box.Vertical}");
 
-            for(int j = 0; j < cols; j++)
+            for(int j = 0; j <= cols; j++)
             {
                 Point p = new Point(j, i);
 
@@ -55,8 +55,6 @@ public class LogVisualizer
 
             }
                 
-            Console.Write(" ");
-            Console.Write(Box.Vertical);
 
             if (i > 0)
             {

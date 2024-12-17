@@ -24,7 +24,7 @@ public class SimulationHistory
         //pozycje startowe
         Dictionary<Point, char> sym = new();
 
-        for (int i = 0; i < SizeX-1; i++)
+        for (int i = 0; i < SizeX; i++)
         {
             for (int j = 0; j < SizeY; j++)
             {
@@ -67,7 +67,7 @@ public class SimulationHistory
             
             Dictionary<Point, char> sym1 = new();
 
-            for (int i = 0; i < SizeX-1; i++)
+            for (int i = 0; i < SizeX; i++)
             {
                 for (int j = 0; j < SizeY; j++)
                 {
