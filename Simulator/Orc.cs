@@ -1,4 +1,5 @@
 ﻿using Simulator.Maps;
+using System.Text.Json.Serialization;
 
 namespace Simulator;
 
@@ -16,6 +17,7 @@ public class Orc : Creature
         }
     }
 
+    [JsonIgnore]
     public override char Symbol { get; } = 'O';
 
 
@@ -49,11 +51,15 @@ public class Orc : Creature
     public override string Greeting() => 
     $"Hi, I'm {Name}, my level is {Level}, my rage is {Rage}.";
 
+
+    [JsonIgnore]
     public override int Power
     {
         get { return (Level * 7 + 3 * Rage); }
     }
 
+
+    [JsonIgnore]
     public override string Info
     {
         get { return $"{Name} [{Level}] [{Rage}]"; }

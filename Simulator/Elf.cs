@@ -1,4 +1,5 @@
 ﻿using Simulator.Maps;
+using System.Text.Json.Serialization;
 
 namespace Simulator;
 
@@ -35,6 +36,8 @@ public class Elf : Creature
         }
     }
 
+
+    [JsonIgnore]
     public override char Symbol { get; } = 'E';
 
     public Elf() : base() {}
@@ -47,11 +50,15 @@ public class Elf : Creature
     public override string Greeting() => 
     $"Hi, I'm {Name}, my level is {Level}, my agility is {Agility}.";
 
+
+    [JsonIgnore]
     public override int Power
     {
         get { return (Level * 8 + 2 * Agility); }
     }
 
+
+    [JsonIgnore]
     public override string Info
     {
         get { return $"{Name} [{Level}] [{Agility}]"; }
